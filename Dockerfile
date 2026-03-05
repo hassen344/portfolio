@@ -1,7 +1,13 @@
 FROM node:24-alpine
+
 WORKDIR /app
-COPY package*.json ./
+
+# Copier uniquement le front
+COPY front/package*.json ./
 RUN npm install
-COPY . .
-EXPOSE 5000
-CMD ["node", "server.js"]
+
+COPY front ./
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev", "--", "--host"]
