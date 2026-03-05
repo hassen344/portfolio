@@ -6,7 +6,12 @@ require('dotenv').config();
 const emailRoute = require('./routes/emailRoute');
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:5173' })); // port Vite
+app.use(cors({ 
+  origin: [
+    'http://localhost:5173',
+    'https://karouihassen.netlify.app'  // ← ajoutez votre vrai URL Netlify
+  ]
+})); // port Vite
 app.use(express.json());
 app.use('/api', emailRoute);
 
