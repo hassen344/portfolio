@@ -1,6 +1,5 @@
-
-
-const transporter = require('../config/mailer');
+// controllers/emailController.js
+const { sendMailtrap } = require('../config/mailer');
 
 const sendEmail = async (req, res) => {
   const { from_name, from_email, message } = req.body;
@@ -10,9 +9,9 @@ const sendEmail = async (req, res) => {
   }
 
   try {
-    await transporter.sendMail({
-      from:    from_email,
-      to:      process.env.EMAIL_USER,
+    await sendMailtrap({
+      from: { name: from_name },
+      to: process.env.EMAIL_TO,
       subject: `Message de ${from_name}`,
       html: `
         <h2>Nouveau message depuis votre portfolio</h2>
@@ -26,8 +25,8 @@ const sendEmail = async (req, res) => {
     res.status(200).json({ success: true, message: 'Email envoyé !' });
 
   } catch (err) {
-    console.error('Erreur Nodemailer :', err);
-    res.status(500).json({ success: false, message: 'Erreur lors de envoi.' });
+    console.error('Erreur Mailtrap :', err.response?.data || err.message);
+    res.status(500).json({ success: false, message: "Erreur lors de l'envoi." });
   }
 };
 

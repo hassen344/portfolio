@@ -9,7 +9,7 @@ const app = express();
 app.use(cors({ 
   origin: [
     'http://localhost:5173',
-    'https://karouihassen.netlify.app'  // ← ajoutez votre vrai URL Netlify
+    'https://karoui-hassen2.onrender.com  '
   ]
 })); // port Vite
 app.use(express.json());
