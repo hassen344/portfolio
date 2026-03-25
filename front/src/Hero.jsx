@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaEnvelope, FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import './Hero.css';
-import hassenPhoto from './assets/hassen.webp';
+import hassenPhoto from './assets/hassen.jpeg';
 import karouiImg from './assets/karoui.png';
 import appImg from './assets/gestion de stock .png';
 
@@ -26,7 +26,7 @@ function Hero() {
     setFormStatus('loading');
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:10000';
       const res = await fetch(`${API_URL}/api/contact`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
